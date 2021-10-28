@@ -1,13 +1,16 @@
 package com.assignment.tictactoe.controller;
 
+import com.assignment.tictactoe.annotations.ApiController;
 import com.assignment.tictactoe.dto.RequestDto;
 import com.assignment.tictactoe.dto.Response;
 import com.assignment.tictactoe.service.GameService;
+import com.assignment.tictactoe.util.UrlConstraint;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+@ApiController
+@RequestMapping(value = UrlConstraint.TicTacToe.ROOT)
 public class GameController {
 
     private final GameService gameService;
@@ -16,8 +19,8 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @PostMapping("/game")
-    private Response game(@RequestBody RequestDto requestDto) {
+    @PostMapping
+    private Response playGame(@RequestBody RequestDto requestDto) {
         return gameService.playGame(requestDto);
     }
 }

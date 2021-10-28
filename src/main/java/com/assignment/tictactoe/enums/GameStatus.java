@@ -1,7 +1,7 @@
 package com.assignment.tictactoe.enums;
 
 public enum GameStatus {
-    NEW("New game"), IN_PROGRESS("Match is in progress"), FINISHED("Match was finished");
+    NEW("New Game Started"), IN_PROGRESS("Match In Progress!"), FINISHED("Match Is Finished!");
 
     private String value;
 

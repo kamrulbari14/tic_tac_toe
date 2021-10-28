@@ -2,6 +2,7 @@ package com.assignment.tictactoe.service.impl;
 
 import com.assignment.tictactoe.dto.RequestDto;
 import com.assignment.tictactoe.dto.Response;
+import com.assignment.tictactoe.dto.ResultDto;
 import com.assignment.tictactoe.enums.GameStatus;
 import com.assignment.tictactoe.enums.Player;
 import com.assignment.tictactoe.model.Game;
@@ -18,11 +19,13 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Response playGame(RequestDto requestDto) {
-        if (requestDto.getPalyer1() != null && requestDto.getGameId() == null) {
+        if (requestDto.getPlayer1() != null && requestDto.getGameId() == null) {
             Game game = new Game();
             game.setBoard(new int[3][3]);
             game.setGameId(UUID.randomUUID().toString());
             game.setStatus(GameStatus.NEW.getValue());
+            game.setMessage(requestDto.getPlayer1() + "'s turn !!");
+            game.setTurn(requestDto.getPlayer1());
             InMemoryStorage.getInstance().setGame(game);
             return ResponseBuilder.getSuccessResponse(HttpStatus.OK, "New game created", game);
         }
@@ -38,17 +41,39 @@ public class GameServiceImpl implements GameService {
             }
 
             int[][] board = game.getBoard();
-            board[requestDto.getRow()][requestDto.getColumn()] = requestDto.getChoice().getValue();
-            game.setStatus(GameStatus.IN_PROGRESS.getValue());
+            if (board[requestDto.getRow()][requestDto.getColumn()] == 0 && requestDto.getChoice() == game.getTurn()) {
+                board[requestDto.getRow()][requestDto.getColumn()] = requestDto.getChoice().getValue();
+                game.setStatus(GameStatus.IN_PROGRESS.getValue());
+                if (requestDto.getChoice() == Player.CIRCLE) {
+                    game.setMessage(Player.CROSS + "'s turn !!");
+                    game.setTurn(Player.CROSS);
+                } else if (requestDto.getChoice() == Player.CROSS) {
+                    game.setMessage(Player.CIRCLE + "'s turn !!");
+                    game.setTurn(Player.CIRCLE);
+                }
+            } else if (board[requestDto.getRow()][requestDto.getColumn()] != 0) {
+                game.setMessage("Already inserted!! Don't cheat!!");
+            } else {
+                game.setMessage("It's not your turn now !!");
+            }
 
-            Boolean xWinner = checkWinner(game.getBoard(), Player.X);
-            Boolean oWinner = checkWinner(game.getBoard(), Player.O);
+            ResultDto xResult = checkWinner(game.getBoard(), Player.CROSS);
+            ResultDto oResult = checkWinner(game.getBoard(), Player.CIRCLE);
 
-            if (xWinner) {
-                game.setWinner(Player.X);
+            if (xResult.getWin()) {
+                game.setWinner(Player.CROSS + "(X) Wins!");
+                game.setWinningCell(xResult.getWinningCell());
+                game.setMessage("Game Over!");
                 game.setStatus(GameStatus.FINISHED.getValue());
-            } else if (oWinner) {
-                game.setWinner(Player.O);
+            } else if (oResult.getWin()) {
+                game.setWinner(Player.CIRCLE + "(O) Wins!");
+                game.setWinningCell(oResult.getWinningCell());
+                game.setMessage("Game Over!");
+                game.setStatus(GameStatus.FINISHED.getValue());
+            }
+            if (xResult.getDraw() || oResult.getDraw()) {
+                game.setWinner("Draw!");
+                game.setMessage("Game Over!");
                 game.setStatus(GameStatus.FINISHED.getValue());
             }
 
@@ -58,13 +83,23 @@ public class GameServiceImpl implements GameService {
         return ResponseBuilder.getFailureResponse(HttpStatus.INTERNAL_SERVER_ERROR, "There is some logical error");
     }
 
-    private Boolean checkWinner(int[][] board, Player choice) {
+    private ResultDto checkWinner(int[][] board, Player choice) {
+        ResultDto result = new ResultDto();
+        result.setWin(false);
+        result.setDraw(false);
         int[] boardArray = new int[9];
-        int counterIndex = 0;
+        int counterIndex = 0, drawCounter = 0;
+        ;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 boardArray[counterIndex] = board[i][j];
                 counterIndex++;
+                if (board[i][j] != 0) {
+                    drawCounter++;
+                    if (drawCounter == 9) {
+                        result.setDraw(true);
+                    }
+                }
             }
         }
         int[][] winCombinations = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
@@ -74,11 +109,12 @@ public class GameServiceImpl implements GameService {
                 if (boardArray[winCombinations[i][j]] == choice.getValue()) {
                     counter++;
                     if (counter == 3) {
-                        return true;
+                        result.setWin(true);
+                        result.setWinningCell(winCombinations[i]);
                     }
                 }
             }
         }
-        return false;
+        return result;
     }
 }

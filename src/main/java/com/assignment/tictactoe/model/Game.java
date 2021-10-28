@@ -8,5 +8,8 @@ public class Game {
     private String gameId;
     private String status;
     private int[][] board;
-    private Player winner;
+    private String winner;
+    private String message;
+    private Player turn;
+    private int[] winningCell;
 }

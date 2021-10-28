@@ -1,7 +1,7 @@
 package com.assignment.tictactoe.enums;
 
 public enum Player {
-    X(1), O(2);
+    CROSS(1), CIRCLE(2);
 
     private Integer value;
 
