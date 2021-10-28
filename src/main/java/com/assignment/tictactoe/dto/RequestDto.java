@@ -1,11 +1,13 @@
 package com.assignment.tictactoe.dto;
 
+import com.assignment.tictactoe.enums.Player;
 import lombok.Data;
 
 @Data
 public class RequestDto {
+    private String gameId;
     private String palyer1;
-    private String value;
-    private int row;
-    private int column;
+    private Player choice;
+    private Integer row;
+    private Integer column;
 }
