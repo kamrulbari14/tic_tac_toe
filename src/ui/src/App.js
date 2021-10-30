@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import {TicTacToe} from './TicTacToe/TicTacToe';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Tic Tac Toe Game</h1>
-    </div>
+      <div style={{ minHeight: '1025px' }} className='App'>
+          <TicTacToe />
+      </div>
   );
 }
 
