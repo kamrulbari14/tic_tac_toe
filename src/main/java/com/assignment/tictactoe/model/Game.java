@@ -11,5 +11,5 @@ public class Game {
     private String winner;
     private String message;
     private Player turn;
-    private int[] winningCell;
+    private String winningCell;
 }

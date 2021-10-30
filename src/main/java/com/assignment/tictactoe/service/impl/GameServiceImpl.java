@@ -12,6 +12,7 @@ import com.assignment.tictactoe.util.ResponseBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 @Service
@@ -71,7 +72,7 @@ public class GameServiceImpl implements GameService {
                 game.setMessage("Game Over!");
                 game.setStatus(GameStatus.FINISHED.getValue());
             }
-            if (xResult.getDraw() || oResult.getDraw()) {
+            if (!xResult.getWin() && !oResult.getWin() && (xResult.getDraw() || oResult.getDraw())) {
                 game.setWinner("Draw!");
                 game.setMessage("Game Over!");
                 game.setStatus(GameStatus.FINISHED.getValue());
@@ -110,7 +111,7 @@ public class GameServiceImpl implements GameService {
                     counter++;
                     if (counter == 3) {
                         result.setWin(true);
-                        result.setWinningCell(winCombinations[i]);
+                        result.setWinningCell(Arrays.toString(winCombinations[i]));
                     }
                 }
             }

@@ -6,5 +6,5 @@ import lombok.Data;
 public class ResultDto {
     private Boolean win;
     private Boolean draw;
-    private int[] winningCell;
+    private String winningCell;
 }
