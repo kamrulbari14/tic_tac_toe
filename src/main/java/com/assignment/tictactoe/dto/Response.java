@@ -9,13 +9,13 @@ import java.util.List;
 @Data
 @Builder
 public class Response {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude
     private Long timeStamp;
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude
     private int statusCode;
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude
     private String status;
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude
     private String message;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object content;

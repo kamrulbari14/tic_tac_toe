@@ -53,7 +53,7 @@ public class GameServiceImpl implements GameService {
                     game.setTurn(Player.CIRCLE);
                 }
             } else if (board[requestDto.getRow()][requestDto.getColumn()] != 0) {
-                game.setMessage("Already inserted!! Don't cheat!!");
+                game.setMessage("Already inserted!!");
             } else {
                 game.setMessage("It's not your turn now !!");
             }
@@ -90,7 +90,6 @@ public class GameServiceImpl implements GameService {
         result.setDraw(false);
         int[] boardArray = new int[9];
         int counterIndex = 0, drawCounter = 0;
-        ;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 boardArray[counterIndex] = board[i][j];
