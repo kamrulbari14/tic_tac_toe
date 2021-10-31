@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class RequestDto {
     private String gameId;
-    private Player player1;
+    private Player player;
     private Player choice;
     private Integer row;
     private Integer column;

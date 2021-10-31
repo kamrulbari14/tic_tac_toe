@@ -20,13 +20,13 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Response playGame(RequestDto requestDto) {
-        if (requestDto.getPlayer1() != null && requestDto.getGameId() == null) {
+        if (requestDto.getPlayer() != null && requestDto.getGameId() == null) {
             Game game = new Game();
             game.setBoard(new int[3][3]);
             game.setGameId(UUID.randomUUID().toString());
             game.setStatus(GameStatus.NEW.getValue());
-            game.setMessage(requestDto.getPlayer1() + "'s turn !!");
-            game.setTurn(requestDto.getPlayer1());
+            game.setMessage(requestDto.getPlayer() + "'s turn !!");
+            game.setTurn(requestDto.getPlayer());
             InMemoryStorage.getInstance().setGame(game);
             return ResponseBuilder.getSuccessResponse(HttpStatus.OK, "New game created", game);
         }

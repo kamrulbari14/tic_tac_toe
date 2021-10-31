@@ -22,7 +22,7 @@ const TicTacToe = () => {
         if (num === 0 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 0,
                 column: 0,
@@ -30,7 +30,7 @@ const TicTacToe = () => {
         } else if (num === 0 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 0,
                 column: 0,
@@ -38,7 +38,7 @@ const TicTacToe = () => {
         } else if (num === 1 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 0,
                 column: 1,
@@ -46,7 +46,7 @@ const TicTacToe = () => {
         } else if (num === 1 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 0,
                 column: 1,
@@ -54,7 +54,7 @@ const TicTacToe = () => {
         } else if (num === 2 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 0,
                 column: 2,
@@ -62,7 +62,7 @@ const TicTacToe = () => {
         } else if (num === 2 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 0,
                 column: 2,
@@ -70,7 +70,7 @@ const TicTacToe = () => {
         } else if (num === 3 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 1,
                 column: 0,
@@ -78,7 +78,7 @@ const TicTacToe = () => {
         } else if (num === 3 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 1,
                 column: 0,
@@ -86,7 +86,7 @@ const TicTacToe = () => {
         } else if (num === 4 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 1,
                 column: 1,
@@ -94,7 +94,7 @@ const TicTacToe = () => {
         } else if (num === 4 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 1,
                 column: 1,
@@ -102,7 +102,7 @@ const TicTacToe = () => {
         } else if (num === 5 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 1,
                 column: 2,
@@ -110,7 +110,7 @@ const TicTacToe = () => {
         } else if (num === 5 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 1,
                 column: 2,
@@ -118,7 +118,7 @@ const TicTacToe = () => {
         } else if (num === 6 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 2,
                 column: 0,
@@ -126,7 +126,7 @@ const TicTacToe = () => {
         } else if (num === 6 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 2,
                 column: 0,
@@ -134,7 +134,7 @@ const TicTacToe = () => {
         } else if (num === 7 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 2,
                 column: 1,
@@ -142,7 +142,7 @@ const TicTacToe = () => {
         } else if (num === 7 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 2,
                 column: 1,
@@ -150,7 +150,7 @@ const TicTacToe = () => {
         } else if (num === 8 & turn === 'x') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CROSS",
+                player: "CROSS",
                 choice: "CROSS",
                 row: 2,
                 column: 2,
@@ -158,7 +158,7 @@ const TicTacToe = () => {
         } else if (num === 8 & turn === 'o') {
             data = {
                 gameId: gameData.content.gameId,
-                player1: "CIRCLE",
+                player: "CIRCLE",
                 choice: "CIRCLE",
                 row: 2,
                 column: 2,
@@ -246,11 +246,11 @@ const TicTacToe = () => {
         let data = {}
         if (option === 'x') {
             data = {
-                player1: 'CROSS'
+                player: 'CROSS'
             }
         } else if (option === 'o') {
             data = {
-                player1: 'CIRCLE'
+                player: 'CIRCLE'
             }
         }
         fetch('http://localhost:5639/v1/api/playGame', {
