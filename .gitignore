@@ -34,3 +34,7 @@ build/
 
 ### REACT APP ###
 src/ui/node_modules/
+src/main/resources/public/
+
+### Heroku ###
+Procfile
