@@ -165,7 +165,7 @@ const TicTacToe = () => {
             }
         }
 
-        fetch('http://localhost:5639/v1/api/playGame', {
+        fetch('/v1/api/playGame', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
@@ -253,7 +253,7 @@ const TicTacToe = () => {
                 player: 'CIRCLE'
             }
         }
-        fetch('http://localhost:5639/v1/api/playGame', {
+        fetch('/v1/api/playGame', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
