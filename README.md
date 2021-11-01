@@ -36,6 +36,6 @@ Here are some validations mentioned which are maintained in the game.
 ### `Run on Local pc/laptops` ###
 To run this project locally all we have to do is follow these steps:
 
-1. At first we have to go to the **ui** folder of the project which is in the **src** directory.
+1. At first we have to create a folder named **public** in **(src\main\resources\)** and then we have to go to the **ui** folder of the project which is in the **src** directory.
 2. Then first we have to run **yarn** from terminal and then **yarn build**.
 3. Then we can just run our spring boot project and the game will be available on **localhost:5639**
