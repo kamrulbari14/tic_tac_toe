@@ -6,10 +6,9 @@ This is a project of completing an assignment which was to make a game named **T
 
 ## `Project Details`
 ***The most important thing about this project is the *backend* and the *frontend* is running as a single domain on a single server.
-And on `heroku` only the .jar file is deployed.***
+So only the .jar file is deployed  on [Heroku](https://game-tic-tac-toe-kamrul.herokuapp.com).***
 * The project is build with **Spring Boot** and **React** where *Spring Boot* is used for **Backend** and *React* for **Frontend**.
 * Tried to satisfy all the possible requirements as understood.
-* The game is deployed on [heroku.com](https://game-tic-tac-toe-kamrul.herokuapp.com)
 * The project is build by following the best practices which are maintained in production level software.
 * There is no database used for this game. Rather than that an in memory storage is maintained which is build with singleton pattern java class.
 * A unique ID  is maintained for each game which will provide multiple games running simultaneously without getting any conflicts.
@@ -36,6 +35,7 @@ Here are some validations mentioned which are maintained in the game.
 ### `Run on Local pc/laptops` ###
 To run this project locally all we have to do is follow these steps:
 
-1. At first we have to create a folder named **public** in **(src\main\resources\)** and then we have to go to the **ui** folder of the project which is in the **src** directory.
-2. Then first we have to run **yarn** from terminal and then **yarn build**.
-3. Then we can just run our spring boot project and the game will be available on **localhost:5639**
+1. At first we have to create a folder named **public** in **( src\main\resources\ )**.
+2. Next we have to open a command prompt or a terminal and go to the **\src\ui** path of the project.
+3. Then first we have to run **yarn** from terminal and then **yarn build**.
+4. Then we can just run our spring boot project and the game will be available on **localhost:5639**
